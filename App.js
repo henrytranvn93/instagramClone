@@ -1,21 +1,16 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import LandingScreen from './components/auth/Landing';
 
+const Stack = createStackNavigator()
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>This is FoodBook test App</Text>
-      <Button title="Testing" onPress={() => alert('hey')}/>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Landing">
+        <Stack.Screen name="Landing" component={LandingScreen} options={{headerShown: false}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
